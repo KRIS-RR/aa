@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury & Comfort Kriopigi — All-in-One Website</title>
+  <meta name="description" content="Luxury & Comfort Kriopigi: premium holiday apartment in Halkidiki, Greece. One-page responsive website with gallery, amenities, reviews, FAQ and contact form." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#c9a96e;
+      --gold-2:#e1c892;
+      --bg:#0a0a0a;
+      --panel:#141414;
+      --panel-2:#1d1d1d;
+      --text:#f3efe8;
+      --muted:#c9c1b4;
+      --line:rgba(255,255,255,.08);
+      --max:1200px;
+      --radius:22px;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Outfit',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(calc(100% - 2rem),var(--max));margin:auto}
+
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(10,10,10,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      min-height:74px;
+    }
+    .brand{display:flex;align-items:center;gap:.8rem;font-weight:600}
+    .brand-mark{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid rgba(201,169,110,.45);color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+    }
+    .brand-text small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+    .nav-links{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap}
+    .nav-links a{color:var(--muted);font-size:.95rem}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      border-radius:999px;padding:.95rem 1.3rem;font-weight:600;
+      transition:.25s ease;cursor:pointer;border:1px solid transparent;
+    }
+    .btn-gold{background:var(--gold);color:#111}
+    .btn-gold:hover{background:var(--gold-2);transform:translateY(-1px)}
+    .btn-outline{border-color:rgba(201,169,110,.45);color:var(--text);background:transparent}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+    .hero{
+      position:relative;overflow:hidden;
+      min-height:92vh;display:flex;align-items:center;
+      background:
+        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+        url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero::after{
+      content:'';position:absolute;inset:auto 0 0;height:140px;
+      background:linear-gradient(to top,var(--bg),transparent);
+    }
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr .8fr;gap:2rem;align-items:end;padding:5rem 0}
+    .eyebrow{display:inline-block;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:#f5e7c7;background:rgba(255,255,255,.06);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.05;margin:0 0 .8rem}
+    h1{font-size:clamp(3rem,6vw,5.8rem);max-width:10ch;margin-top:1rem}
+    h2{font-size:clamp(2.2rem,4vw,3.7rem)}
+    h3{font-size:1.8rem}
+    .lead{font-size:1.1rem;color:#f1eadf;max-width:58ch}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.7rem}
+    .rating{
+      justify-self:end;align-self:start;
+      background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);min-width:220px
+    }
+    .rating-score{font-size:3.2rem;font-family:'Cormorant Garamond',serif;color:var(--gold);line-height:.9}
+    .rating p{margin:.3rem 0;color:var(--muted)}
+
+    section{padding:5.5rem 0;border-top:1px solid var(--line)}
+    .section-head{max-width:760px;margin-bottom:2.5rem}
+    .section-head p{color:var(--muted);margin:0}
+    .kicker{color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;margin-bottom:.7rem}
+
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center}
+    .card{
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)
+    }
+    .image-card{overflow:hidden;padding:0}
+    .image-card img{height:100%;min-height:420px;object-fit:cover}
+    .list{display:grid;gap:1rem;padding:0;margin:1.2rem 0 0;list-style:none}
+    .list li{padding-left:1rem;border-left:2px solid rgba(201,169,110,.35);color:var(--muted)}
+
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .feature{padding:1.3rem;border-radius:18px;background:var(--panel);border:1px solid var(--line)}
+    .feature strong{display:block;font-size:1.05rem;color:#fff;margin-bottom:.3rem}
+    .feature span{color:var(--muted);font-size:.94rem}
+
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .gallery-item{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);min-height:260px;background:#111}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .gallery-item:hover img{transform:scale(1.05)}
+    .gallery-item .caption{position:absolute;left:0;right:0;bottom:0;padding:1rem;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);font-weight:500}
+
+    .amenities-grid,.reviews-grid,.faq-grid,.contact-grid,.stats{display:grid;gap:1rem}
+    .amenities-grid{grid-template-columns:repeat(3,1fr)}
+    .amenity{padding:1.25rem;border-radius:18px;background:var(--panel);border:1px solid var(--line)}
+    .amenity h4{font-size:1.45rem;margin-bottom:.25rem}
+    .amenity p{margin:0;color:var(--muted)}
+    .stats{grid-template-columns:repeat(4,1fr);margin-top:1.2rem}
+    .stat{padding:1rem;border-left:1px solid var(--line)}
+    .stat:first-child{border-left:none}
+    .stat strong{display:block;font-size:2rem;font-family:'Cormorant Garamond',serif;color:var(--gold)}
+    .stat span{color:var(--muted);font-size:.95rem}
+
+    .reviews-grid{grid-template-columns:repeat(3,1fr)}
+    .review blockquote{margin:0 0 1rem;font-size:1rem;color:#f4eee4}
+    .review .author{color:var(--gold);font-weight:600}
+
+    .faq-grid{grid-template-columns:1.1fr .9fr}
+    details{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem}
+    details + details{margin-top:.9rem}
+    summary{cursor:pointer;font-weight:600}
+    details p{color:var(--muted);margin:.9rem 0 0}
+    .rules li{margin:.6rem 0;color:var(--muted)}
+
+    .contact-grid{grid-template-columns:1fr 1fr}
+    form{display:grid;gap:.9rem}
+    input,textarea{
+      width:100%;background:#0f0f0f;color:#fff;border:1px solid rgba(255,255,255,.09);
+      border-radius:14px;padding:1rem;font:inherit
+    }
+    textarea{min-height:150px;resize:vertical}
+    .contact-box p,.contact-box li{color:var(--muted)}
+
+    .cta{
+      padding:2rem;border-radius:28px;border:1px solid rgba(201,169,110,.22);
+      background:radial-gradient(circle at top left,rgba(201,169,110,.16),transparent 40%),linear-gradient(180deg,#171717,#0f0f0f)
+    }
+
+    footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted)}
+    .footer-row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+    @media (max-width: 980px){
+      .hero-grid,.grid-2,.faq-grid,.contact-grid{grid-template-columns:1fr}
+      .rating{justify-self:start}
+      .features,.amenities-grid,.reviews-grid,.stats,.gallery-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 640px){
+      .nav-inner{flex-direction:column;align-items:flex-start;padding:.8rem 0}
+      .nav-links{gap:.8rem}
+      .hero{min-height:auto}
+      .hero-grid{padding:4rem 0}
+      .features,.amenities-grid,.reviews-grid,.stats,.gallery-grid{grid-template-columns:1fr}
+      section{padding:4rem 0}
+      h1{max-width:12ch}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">L&amp;C</span>
+        <span class="brand-text">Luxury &amp; Comfort Kriopigi<small>Halkidiki, Greece</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#property">Property</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-gold">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Premium Holiday Apartment</span>
+        <h1>Luxury &amp; Comfort in the Heart of Kriopigi</h1>
+        <p class="lead">A stylish two-bedroom retreat for families, couples and peaceful escapes, with a spacious terrace, lemon garden and the relaxed atmosphere of Halkidiki.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Request Availability</a>
+          <a href="#gallery" class="btn btn-outline">View Gallery</a>
+        </div>
+      </div>
+      <aside class="rating card">
+        <div class="rating-score">9.7</div>
+        <p><strong>Exceptional</strong></p>
+        <p>Guests highlight cleanliness, comfort, the terrace, peaceful surroundings and responsive hosting.</p>
+      </aside>
+    </div>
+  </header>
+
+  <section id="property">
+    <div class="container grid-2">
+      <div class="section-head">
+        <div class="kicker">The Property</div>
+        <h2>A Place Designed for Living Well</h2>
+        <p>Modern comfort meets Mediterranean charm in the heart of Kriopigi.</p>
+        <ul class="list">
+          <li>Two thoughtfully arranged bedrooms: one generous double bed and one room with two comfortable single beds.</li>
+          <li>Spacious indoor layout with a fully equipped kitchen, living area and calm, refined interiors.</li>
+          <li>Outdoor terrace, balcony and fragrant lemon garden for slow mornings and relaxed evenings.</li>
+          <li>Ideal for couples, families, longer stays and guests who want a quiet base near beaches and village life.</li>
+        </ul>
+      </div>
+      <div class="card image-card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80" alt="Elegant bedroom and apartment interior" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="features">
+        <div class="feature"><strong>Refined Interiors</strong><span>Modern, clean and thoughtfully designed spaces that feel calm from the moment you arrive.</span></div>
+        <div class="feature"><strong>Terrace &amp; Garden</strong><span>Outdoor dining, sunshine, quiet evenings and lemon trees around you.</span></div>
+        <div class="feature"><strong>Remote-Work Friendly</strong><span>Fast Wi-Fi and a peaceful setting for longer stays or workation trips.</span></div>
+        <div class="feature"><strong>Excellent Base</strong><span>Easy access to beaches, restaurants, Kallithea and the best of Halkidiki.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Gallery</div>
+        <h2>A Visual Journey Through the Stay</h2>
+        <p>Single-file version with placeholder images. You can later replace each image URL with your own property photos.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80" alt="Living spaces"><div class="caption">Living Spaces</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80" alt="Kitchen"><div class="caption">Kitchen &amp; Dining</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=1200&q=80" alt="Outdoor terrace"><div class="caption">Outdoor Living</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80" alt="Beach atmosphere"><div class="caption">Beach &amp; Atmosphere</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200&q=80" alt="Bedroom"><div class="caption">Bedrooms</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1468413253725-0d5181091126?w=1200&q=80" alt="Mediterranean garden"><div class="caption">Garden &amp; Mediterranean Mood</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Amenities &amp; Location</div>
+        <h2>Everything You Need</h2>
+        <p>Premium comfort indoors and out, in one of Halkidiki’s most charming villages.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity"><h4>Fast Wi-Fi</h4><p>Stream, video call and work remotely with confidence.</p></div>
+        <div class="amenity"><h4>Air Conditioning</h4><p>Comfort in every room during warm summer days.</p></div>
+        <div class="amenity"><h4>Equipped Kitchen</h4><p>Oven, hob, fridge and all the utensils you need.</p></div>
+        <div class="amenity"><h4>Smart Entertainment</h4><p>Streaming-ready setup for relaxed evenings indoors.</p></div>
+        <div class="amenity"><h4>Washing Machine</h4><p>Convenient in-unit laundry for longer stays.</p></div>
+        <div class="amenity"><h4>Outdoor Spaces</h4><p>Terrace, balcony and lemon garden for a slow Mediterranean rhythm.</p></div>
+      </div>
+      <div class="card" style="margin-top:1.25rem;">
+        <h3>Why Kriopigi?</h3>
+        <p style="color:var(--muted);margin-top:0;">Quiet, green and well-positioned for enjoying both village atmosphere and nearby beaches. A strong base for exploring Kriopigi Beach, Kallithea and the wider Halkidiki area.</p>
+        <div class="stats">
+          <div class="stat"><strong>2</strong><span>Bedrooms</span></div>
+          <div class="stat"><strong>1</strong><span>Private apartment</span></div>
+          <div class="stat"><strong>Fast</strong><span>Wi-Fi for work &amp; leisure</span></div>
+          <div class="stat"><strong>Large</strong><span>Terrace &amp; garden area</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Guest Reviews</div>
+        <h2>What Guests Say</h2>
+        <p>Highlights from the review page content.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="card review">
+          <blockquote>“The apartment was immaculately clean and incredibly comfortable. Everything was exactly as described, and the beds were heavenly.”</blockquote>
+          <div class="author">Guest Review</div>
+        </div>
+        <div class="card review">
+          <blockquote>“The terrace is absolutely magical. We spent every evening out there dining under the stars with a glass of local wine.”</blockquote>
+          <div class="author">Guest Review</div>
+        </div>
+        <div class="card review">
+          <blockquote>“Outstanding communication from our host, very fast Wi-Fi for remote work, and a peaceful atmosphere throughout the stay.”</blockquote>
+          <div class="author">Guest Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container faq-grid">
+      <div>
+        <div class="section-head">
+          <div class="kicker">FAQ</div>
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know before and during your stay.</p>
+        </div>
+        <details open>
+          <summary>What are the check-in and check-out times?</summary>
+          <p>Check-in from 15:00 and check-out by 11:00. Flexible times may be possible on request.</p>
+        </details>
+        <details>
+          <summary>Is the property suitable for families?</summary>
+          <p>Yes. The two-bedroom layout works well for families, couples or small groups looking for a calm and comfortable base.</p>
+        </details>
+        <details>
+          <summary>Can I work remotely from the apartment?</summary>
+          <p>Yes. Fast Wi-Fi and a quiet atmosphere make it suitable for longer stays and work-friendly trips.</p>
+        </details>
+        <details>
+          <summary>Are pets allowed?</summary>
+          <p>The original site content references pet-friendly hospitality in reviews. Keep or adjust this depending on your actual house policy.</p>
+        </details>
+      </div>
+      <div class="card">
+        <h3>House Rules</h3>
+        <ul class="rules">
+          <li>Respect neighbours between 23:00 and 08:00. The area is residential.</li>
+          <li>Smoking only in outdoor areas, never inside the apartment.</li>
+          <li>Please leave the property in good condition and report any issue promptly.</li>
+          <li>Special requests can be discussed directly with the host in advance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="section-head">
+          <div class="kicker">Book Your Stay</div>
+          <h2>Request Availability</h2>
+          <p>Send a direct inquiry for dates, pricing and special arrangements.</p>
+        </div>
+        <div class="cta contact-box">
+          <p>Best price guaranteed through direct contact, with personal communication and flexible arrangements where possible.</p>
+          <ul>
+            <li>WhatsApp: add your number</li>
+            <li>Email: add your booking email</li>
+            <li>Booking.com: add your listing link</li>
+            <li>Airbnb: add your listing link</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <form>
+          <input type="text" placeholder="Full name" />
+          <input type="email" placeholder="Email address" />
+          <input type="text" placeholder="Preferred dates" />
+          <textarea placeholder="Tell us about your stay, number of guests, and any questions..."></textarea>
+          <button type="submit" class="btn btn-gold">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <div>Luxury &amp; Comfort Kriopigi — One-page all-in-one file</div>
+      <div>Kriopigi, Halkidiki, Greece</div>
+    </div>
+  </footer>
+</body>
+</html>
